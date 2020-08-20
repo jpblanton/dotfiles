@@ -1,0 +1,2 @@
+alias jupy="jupyter notebook"
+alias ..="cd .."

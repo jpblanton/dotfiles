@@ -1,0 +1,8 @@
+# Create a new directory and enter it
+function mkd() {
+  mkdir -p "$@" && cd "$@"
+}
+
+function cap() {
+  git commit -m "$@" && git push
+}
