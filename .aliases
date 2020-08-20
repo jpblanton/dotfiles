@@ -1,2 +1,7 @@
 alias jupy="jupyter notebook"
 alias ..="cd .."
+alias py3=python3
+alias t="tmux"
+alias ta="t a -t"
+alias tls="t ls"
+alias tn="t new -t"
