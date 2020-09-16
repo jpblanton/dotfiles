@@ -5,6 +5,7 @@ set foldlevel=99
 set encoding=utf-8
 set mouse=a
 filetype off                  " required
+filetype plugin on
 
 au BufNewFile,BufRead *.py
     \| set tabstop=4
@@ -24,9 +25,10 @@ nmap <C-C> :let @+= expand("%:p")<CR>
 map <C-t> :NERDTreeToggle<CR>
 nnoremap <C-s> [s1z=<c-o>
 inoremap <C-s> <c-g>u<Esc>[s1z=`]A<c-g>u
+nnoremap <leader>c :nohl<CR> 
 
-autocmd BufReadPost,FileReadPost *.ged %!gedcom_indent
-autocmd FileType gedcom set foldmethod=indent nolist ts=4
+"autocmd BufReadPost,FileReadPost *.ged %!gedcom_indent
+"autocmd FileType gedcom set foldmethod=indent nolist ts=4
 
 augroup lexical
   autocmd!
@@ -44,9 +46,6 @@ augroup textobj_sentence
   autocmd FileType markdown call textobj#sentence#init()
   autocmd FileType textile call textobj#sentence#init()
 augroup END
-
-autocmd BufReadPost,FileReadPost *.ged %!gedcom_indent
-autocmd FileType gedcom set foldmethod=indent nolist ts=4
 
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -72,10 +71,17 @@ EOF
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" allows us to install vundle on opening if not installed
+let s:bootstrap = 0
+try
+	call vundle#begin()
+catch /E117:/
+	let s:bootstrap = 1
+	silent !mkdir -p ~/.vim/bundle
+	silent !unset GIT_DIR && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	redraw!
+	call vundle#begin()
+endtry
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -99,6 +105,7 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'preservim/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'chrisbra/csv.vim'
 
 " writing plugins
 Plugin 'reedes/vim-pencil'

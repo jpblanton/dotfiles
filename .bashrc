@@ -1,1 +1,1 @@
-source .functions .aliases
+source ~/.bash_profile

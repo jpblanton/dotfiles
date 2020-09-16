@@ -6,3 +6,30 @@ function mkd() {
 function cap() {
   git commit -m "$@" && git push
 }
+
+# Determine size of a file or total size of a directory
+function fs() {
+	if du -b /dev/null > /dev/null 2>&1; then
+		local arg=-sbh;
+	else
+		local arg=-sh;
+	fi
+	if [[ -n "$@" ]]; then
+		du $arg -- "$@";
+	else
+		du $arg .[^.]* ./*;
+	fi;
+}
+
+# Create a new project and cd into it, does NOT check if project already exists
+project () {
+        # TODO : redirect io to /dev/null and write custom messages
+        if [ $# -lt 1 ] ; then
+                cd "$PATH_TO_PROJECTS" && echo 'In Projects'
+        fi
+
+        mkdir -p "$PATH_TO_PROJECTS/$1" && cd "$PATH_TO_PROJECTS/$1"
+        echo "In project $1"
+	git init
+	touch .tmuxp.yaml
+}

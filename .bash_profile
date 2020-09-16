@@ -30,3 +30,9 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
+
+for file in ~/.{aliases,functions}; do
+	    [ -r "$file" ] && [ -f "$file" ] && source "$file";
+    done;
+    unset file;
+export PATH_TO_PROJECTS="$HOME/Projects"
