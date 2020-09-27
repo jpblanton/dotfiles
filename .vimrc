@@ -4,6 +4,7 @@ set foldmethod=indent
 set foldlevel=99
 set encoding=utf-8
 set mouse=a
+set splitbelow
 filetype off                  " required
 filetype plugin on
 
