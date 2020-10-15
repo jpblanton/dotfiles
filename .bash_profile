@@ -31,7 +31,7 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 
-for file in ~/.{aliases,functions}; do
+for file in ~/.{aliases,functions,exports}; do
 	    [ -r "$file" ] && [ -f "$file" ] && source "$file";
     done;
     unset file;

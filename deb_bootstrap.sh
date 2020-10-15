@@ -5,6 +5,7 @@ ln -sv ~/dotfiles/.vimrc ~/.vimrc
 vim -E -c PluginInstall -c q -c q
 cd ~/.vim/bundle/YouCompleteMe
 python3 install.py --all
+EXPORT PYTHONSTARTUP=~/dotfiles/python_startup.py
 
 for file in ~/dotfiles/.[^.]*;
 	do ln -sv $file "~/${file##*/}";
