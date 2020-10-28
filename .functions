@@ -40,4 +40,12 @@ project () {
         echo "In project $1"
 	git init
 	touch .tmuxp.yaml
+	touch .gitignore
+}
+
+# Activate virtual env and save the path as a tmux variable,
+# so that new panes/windows can re-activate as necessary
+function sv() {
+    source *env/bin/activate &&
+    tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
 }

@@ -5,6 +5,7 @@ set foldlevel=99
 set encoding=utf-8
 set mouse=a
 set splitbelow
+set backspace=indent,eol,start
 filetype off                  " required
 filetype plugin on
 
@@ -52,6 +53,35 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:solarized_termcolors=256
 
+" Write this in your vimrc file
+" ALE settings
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+" Check Python files with flake8 and pylint.
+let b:ale_linters = ['flake8', 'pylint']
+" Fix Python files with autopep8 and yapf.
+let b:ale_fixers = ['autopep8', 'yapf']
+
+" status line
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set noruler
+set laststatus=2
+set statusline=
+set statusline+=\ %f
+set statusline+=%{virtualenv#statusline()}
+set statusline+=%{StatuslineGit()}
+set statusline+=%=%l:%c
+
+let g:virtualenv_stl_format = '[%n]'
+
+
 let python_highlight_all=1
 syntax on
 
@@ -60,15 +90,11 @@ color desert
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
 
-"python with virtualenv support
-py3 << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  exec(open(activate_this).read(), dict(__file__=activate_this))
-EOF
+" delete buffer w/o removing split window
+command Bd bp|bd #
+" when text gets stuck overlaid this 'refreshes'
+command Br bp|bn
+
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -94,11 +120,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'sillybun/vim-repl'
 Plugin 'tpope/vim-surround'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -107,6 +132,8 @@ Plugin 'preservim/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'chrisbra/csv.vim'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'dense-analysis/ale'
 
 " writing plugins
 Plugin 'reedes/vim-pencil'
