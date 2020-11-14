@@ -1,0 +1,9 @@
+session_name: ""
+windows:
+        window_name: main
+        panes:
+                -
+                -
+        window_name: jupyter
+        panes:
+                - jupy --no-browser

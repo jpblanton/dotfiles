@@ -55,12 +55,14 @@ let g:solarized_termcolors=256
 
 " Write this in your vimrc file
 " ALE settings
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
+" let g:ale_lint_on_insert_leave = 0
 " Check Python files with flake8 and pylint.
-let b:ale_linters = ['flake8', 'pylint']
+let b:ale_linters = {'python': ['flake8', 'pylint']}
 " Fix Python files with autopep8 and yapf.
-let b:ale_fixers = ['autopep8', 'yapf']
+let b:ale_fixers = {'python': ['autopep8', 'yapf']}
+" Better signs
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠'
 
 " status line
 function! GitBranch()
@@ -134,6 +136,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'chrisbra/csv.vim'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'dense-analysis/ale'
+Plugin 'junegunn/fzf'
 
 " writing plugins
 Plugin 'reedes/vim-pencil'

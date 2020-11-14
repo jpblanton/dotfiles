@@ -40,3 +40,4 @@ export PATH_TO_PROJECTS="$HOME/Projects"
 if [ -n "$VIRTUAL_ENV" ]; then
 	    source $VIRTUAL_ENV/bin/activate;
 fi
+export PATH="$PATH:/opt/mssql-tools/bin"
