@@ -24,7 +24,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nmap <C-C> :let @+= expand("%:p")<CR> 
-map <C-t> :NERDTreeToggle<CR>
 nnoremap <C-s> [s1z=<c-o>
 inoremap <C-s> <c-g>u<Esc>[s1z=`]A<c-g>u
 nnoremap <leader>c :nohl<CR> 
@@ -50,7 +49,7 @@ augroup textobj_sentence
 augroup END
 
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 let g:solarized_termcolors=256
 
 " Write this in your vimrc file
@@ -82,6 +81,15 @@ set statusline+=%{StatuslineGit()}
 set statusline+=%=%l:%c
 
 let g:virtualenv_stl_format = '[%n]'
+
+" NERDTree settings
+" open on start
+autocmd vimenter * NERDTree
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists(“s:std_in”) | NERDTree | endif
+map <C-t> :NERDTreeToggle<CR>
+" close if NERDtree is last open tab
+" autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
 
 
 let python_highlight_all=1
@@ -137,6 +145,7 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'dense-analysis/ale'
 Plugin 'junegunn/fzf'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " writing plugins
 Plugin 'reedes/vim-pencil'
