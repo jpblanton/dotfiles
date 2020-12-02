@@ -1,3 +1,5 @@
 export EDITOR=vim
 export PYTHONSTARTUP=~/dotfiles/.pythonrc
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
+export PROMPT='%m:%~ %n %# '
+
