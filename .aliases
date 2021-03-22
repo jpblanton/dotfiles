@@ -1,4 +1,5 @@
 alias jupy="jupyter notebook"
+alias jlab="jupyter lab"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."

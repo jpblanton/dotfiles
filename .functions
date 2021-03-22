@@ -38,8 +38,11 @@ project () {
 
         mkdir -p "$PATH_TO_PROJECTS/$1" && cd "$PATH_TO_PROJECTS/$1"
         echo "In project $1"
+	export PROJ=$1
 	git init
-	echo "session_name: $1" > .tmuxp.yaml
+	cp ~/dotfiles/.python.tmux.yaml ./.tmuxp.yaml
+	sed -i '' -e  "s/PROJ:.*/PROJ: $1/g" \.tmuxp.yaml
+	python3 -m virtualenv $1-env
 	touch .gitignore
 }
 
