@@ -31,6 +31,8 @@ nnoremap <leader>c :nohl<CR>
 "autocmd BufReadPost,FileReadPost *.ged %!gedcom_indent
 "autocmd FileType gedcom set foldmethod=indent nolist ts=4
 
+let g:pencil#wrapModeDefault = 'soft'
+
 augroup lexical
   autocmd!
   autocmd FileType markdown,mkd call lexical#init()

@@ -40,7 +40,14 @@ project () {
         echo "In project $1"
 	git init
 	echo "session_name: $1" > .tmuxp.yaml
+	echo "start_directory: /home/james/Projects/$1" >> .tmuxp.yaml
+	echo "windows:" >> .tmuxp.yaml
+	echo "  - window_name: main" >> .tmuxp.yaml
 	touch .gitignore
+	if [[ $2 == "p" ]] ; then
+		python3 -m virtualenv $1-env && echo "shell_command_before: sv" >> .tmuxp.yaml
+	fi
+	tmuxp load .
 }
 
 # Activate virtual env and save the path as a tmux variable,
