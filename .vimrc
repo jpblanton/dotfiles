@@ -86,7 +86,7 @@ let g:virtualenv_stl_format = '[%n]'
 
 " NERDTree settings
 " open on start
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists(“s:std_in”) | NERDTree | endif
 map <C-t> :NERDTreeToggle<CR>
@@ -106,6 +106,8 @@ hi SpellBad cterm=underline ctermfg=red
 command Bd bp|bd #
 " when text gets stuck overlaid this 'refreshes'
 command Br bp|bn
+" copies n lines to system clipboard
+command -nargs=+ Bcp "+<args>yy
 
 
 " set the runtime path to include Vundle and initialize
