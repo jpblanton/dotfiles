@@ -45,6 +45,7 @@ sudo apt update
 sudo apt -y install vim-gtk3 cmake python3-dev python3-pip build-essential tmux tmuxp
 sudo apt -y install npm nodejs golang-go default-jre
 sudo apt -y install zsh
+curl -L git.io/antigen > ~/antigen.zsh
 chsh -s /bin/zsh
 pip install virtualenv
 vim +PluginInstall +qall
