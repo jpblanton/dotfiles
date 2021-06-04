@@ -27,6 +27,7 @@ nmap <C-C> :let @+= expand("%:p")<CR>
 nnoremap <C-s> [s1z=<c-o>
 inoremap <C-s> <c-g>u<Esc>[s1z=`]A<c-g>u
 nnoremap <leader>c :nohl<CR> 
+nnoremap gb :ls<CR>:b<Space>
 
 "autocmd BufReadPost,FileReadPost *.ged %!gedcom_indent
 "autocmd FileType gedcom set foldmethod=indent nolist ts=4
@@ -108,6 +109,16 @@ command Bd bp|bd #
 command Br bp|bn
 " copies n lines to system clipboard
 command -nargs=+ Bcp "+<args>yy
+
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
+" according to your mount point
+if executable(s:clip)
+	augroup WSLYank
+	    autocmd!
+	    autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+	augroup END
+endif
 
 
 " set the runtime path to include Vundle and initialize
