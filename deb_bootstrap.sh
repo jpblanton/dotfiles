@@ -47,6 +47,7 @@ sudo apt -y install npm nodejs golang-go default-jre
 sudo apt -y install zsh
 curl -L git.io/antigen > ~/antigen.zsh
 chsh -s /bin/zsh
+curl -L git.io/antigen > antigen.zsh
 pip install virtualenv
 vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe
