@@ -4,4 +4,4 @@
 [core]
 	excludesFile = ~/.gitignore
 [credential]
-	helper = store
+	credentialStore = cache
