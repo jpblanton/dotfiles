@@ -53,7 +53,6 @@ project () {
 	git init
 	python3 -m virtualenv $1-env
 	touch .gitignore
-	python3 -m virtualenv $1-env
 }
 
 # Activate virtual env and save the path as a tmux variable,
