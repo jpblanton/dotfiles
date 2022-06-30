@@ -51,23 +51,17 @@ project () {
         echo "In project $1"
 	export PROJ=$1
 	git init
-	#echo "session_name: $1" > .tmuxp.yaml
-	#echo "start_directory: /home/james/Projects/$1" >> .tmuxp.yaml
-	#echo "windows:" >> .tmuxp.yaml
-	#echo "  - window_name: main" >> .tmuxp.yaml
-	cp ~/dotfiles/.python.tmux.yaml ./.tmuxp.yaml
-	sed -i '' -e  "s/PROJ:.*/PROJ: $1/g" \.tmuxp.yaml
 	python3 -m virtualenv $1-env
 	touch .gitignore
-	if [[ $2 == "p" ]] ; then
-		python3 -m virtualenv $1-env && echo "shell_command_before: sv" >> .tmuxp.yaml
+	source $1-env/bin/activate
+	pip install --upgrade pip
+	if [ $2 = "dj" ]; then
+		cp ~/dotfiles/django_reqs.txt ./requirements.txt
 	fi
-	tmuxp load .
 }
 
 # Activate virtual env and save the path as a tmux variable,
 # so that new panes/windows can re-activate as necessary
 function sv() {
-    source *env/bin/activate &&
-    tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
+    source *env/bin/activate
 }
