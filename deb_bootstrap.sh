@@ -41,11 +41,13 @@ linkDotfile dtime.py
 linkDotfile now.py
 source ~/.bashrc
 
-sudo apt update
+sudo apt update && sudo apt upgrade
 sudo apt -y install vim-gtk3 cmake python3-dev python3-pip build-essential tmux tmuxp
 sudo apt -y install npm nodejs golang-go default-jre
-sudo apt -y install zsh
+sudo apt -y install zsh libffi-dev libssl-dev
 sudo pip3 install virtualenv
+curl -fsSL test.docker.com -o get-docker.sh && sh get-docker.sh
+sudo usermod -aG docker ${USER}
 curl -L git.io/antigen > ~/antigen.zsh
 chsh -s /bin/zsh
 curl -L git.io/antigen > antigen.zsh
