@@ -55,7 +55,7 @@ project () {
 	touch .gitignore
 	source $1-env/bin/activate
 	pip install --upgrade pip
-	if [ $2 = "dj" ]; then
+	if [[ $2 == "dj" ]]; then
 		cp ~/dotfiles/django_reqs.txt ./requirements.txt
 	fi
 }
