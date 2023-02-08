@@ -60,8 +60,15 @@ project () {
 	fi
 }
 
-# Activate virtual env and save the path as a tmux variable,
-# so that new panes/windows can re-activate as necessary
+# Activate virtual env 
 function sv() {
     source *env/bin/activate
+}
+
+function dei() {
+	if [ "$#" = 2 ]; then
+		docker exec -it "$1" bash -c "$2"
+	else
+		docker exec -it "$@" bash
+	fi
 }
