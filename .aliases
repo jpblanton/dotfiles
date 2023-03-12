@@ -1,4 +1,5 @@
 alias jupy="jupyter notebook"
+
 alias jlab="jupyter lab"
 alias ..="cd .."
 alias ...="cd ../.."
@@ -20,6 +21,6 @@ alias hn="echo $HOST"
 alias dps="docker ps"
 alias dce="docker compose exec"
 alias dcu="docker compose up -d"
-alias dcu="docker compose down"
+alias dcd="docker compose down"
 alias ramusage="ps -eo pmem,pcpu,vsize,pid,cmd | sort -k 1 -nr | head -5"
 alias vscodekill="ps uxa | grep .vscode-server | awk '{print }' | xargs kill -9"
