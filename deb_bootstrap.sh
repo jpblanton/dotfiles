@@ -50,5 +50,4 @@ curl -fsSL test.docker.com -o get-docker.sh && sh get-docker.sh
 sudo usermod -aG docker ${USER}
 curl -L git.io/antigen > ~/antigen.zsh
 chsh -s /bin/zsh
-curl -L git.io/antigen > antigen.zsh
 export PYTHONSTARTUP=~/.pythonrc
