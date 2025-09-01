@@ -51,7 +51,7 @@ project () {
         echo "In project $1"
 	export PROJ=$1
 	git init
-	python3 -m virtualenv $1-env
+	python3 -m venv $1-env
 	touch .gitignore
 	source $1-env/bin/activate
 	pip install --upgrade pip

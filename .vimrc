@@ -79,7 +79,7 @@ set noruler
 set laststatus=2
 set statusline=
 set statusline+=\ %f
-set statusline+=%{virtualenv#statusline()}
+#set statusline+=%{virtualenv#statusline()}
 set statusline+=%{StatuslineGit()}
 set statusline+=%=%l:%c
 

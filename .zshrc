@@ -1,4 +1,7 @@
 source ~/.bashrc
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 # zsh built in vi mode
 # bindkey -v
 # view git branch on prompt
@@ -22,3 +25,5 @@ antigen bundle git
 
 # tell antigen that I'm done
 antigen apply
+
+. "$HOME/.local/bin/env"
