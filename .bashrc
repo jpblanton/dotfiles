@@ -8,6 +8,7 @@ if [ -n "$VIRTUAL_ENV" ]; then
 	    source $VIRTUAL_ENV/bin/activate;
 fi
 export PATH="$PATH:/opt/mssql-tools/bin"
-. "$HOME/.cargo/env"
+# not sure what these are about
+#. "$HOME/.cargo/env"
 
-. "$HOME/.local/bin/env"
+#. "$HOME/.local/bin/env"
