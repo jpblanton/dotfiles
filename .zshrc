@@ -9,7 +9,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 setopt prompt_subst
 
 # Config for prompt. PS1 synonym.
-prompt='%/ $(git_branch_name) %n %# '
+prompt='%n@%m %/ $(git_branch_name) # '
 
 # loading antigen
 source ~/antigen.zsh
