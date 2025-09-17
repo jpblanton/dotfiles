@@ -6,21 +6,21 @@ function linkDotfile {
   dateStr=$(date +%Y-%m-%d-%H%M)
 
   if [ -h ~/${1} ]; then
-    # Existing symlink
+    # Existing symlink 
     echo "Removing existing symlink: ${dest}"
-    rm ${dest}
-
+    rm ${dest} 
+	  
   elif [ -f "${dest}" ]; then
     # Existing file
     echo "Backing up existing file: ${dest}"
     mv ${dest}{,.${dateStr}}
-
+		
   elif [ -d "${dest}" ]; then
     # Existing dir
     echo "Backing up existing dir: ${dest}"
     mv ${dest}{,.${dateStr}}
   fi
-
+	
   echo "Creating new symlink: ${dest}"
   ln -s ${dotfilesDir}/${1} ${dest}
 }
@@ -42,7 +42,9 @@ linkDotfile now.py
 source ~/.bashrc
 
 sudo apt update && sudo apt upgrade
-sudo apt -y install vim zsh
+sudo apt -y install zsh vim
+curl -fsSL test.docker.com -o get-docker.sh && sh get-docker.sh
+sudo usermod -aG docker ${USER}
 curl -L git.io/antigen > ~/antigen.zsh
 chsh -s /bin/zsh
 export PYTHONSTARTUP=~/.pythonrc
