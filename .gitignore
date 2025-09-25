@@ -194,3 +194,5 @@ Temporary Items
 
 # Vim swap files
 *.swp
+
+*.tfvars
