@@ -1,7 +1,7 @@
 source ~/.bashrc
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-#eval "$(pyenv init -)"
+eval "$(pyenv init -)"
 # zsh built in vi mode
 # bindkey -v
 # view git branch on prompt
@@ -9,7 +9,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 setopt prompt_subst
 
 # Config for prompt. PS1 synonym.
-prompt='%n@%m %/ $(git_branch_name) # '
+if [ -n "$SSH_CLIENT" ]; then
+    prompt='%F{blue}%n@%m %~ $(git_branch_name) # '
+else
+    prompt='%n@%m %~ $(git_branch_name) # '
+fi
 
 # loading antigen
 source ~/antigen.zsh
