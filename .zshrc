@@ -10,7 +10,7 @@ setopt prompt_subst
 
 # Config for prompt. PS1 synonym.
 if [ -n "$SSH_CLIENT" ]; then
-    prompt='%F{blue}%n@%m %~ $(git_branch_name) # '
+    prompt='%F{cyan}%n@%m %~ $(git_branch_name) # '
 else
     prompt='%n@%m %~ $(git_branch_name) # '
 fi
