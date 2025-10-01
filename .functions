@@ -62,7 +62,13 @@ project () {
 
 # Activate virtual env 
 function sv() {
-    source *env/bin/activate
+    
+    VALUE=$(source *env/bin/activate 2&>/dev/null)
+    if [[ $? -ne 0 ]]; then
+        source ../*env/bin/activate
+    else
+        source *env/bin/activate
+    fi
 }
 
 function dei() {
