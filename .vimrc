@@ -25,6 +25,21 @@
 "    -> Helper functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""
+" => Vundle
+"""
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'christoomey/vim-tmux-navigator'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -187,9 +202,6 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 500 characters
-set lbr
-set tw=500
 
 set ai "Auto indent
 set si "Smart indent
