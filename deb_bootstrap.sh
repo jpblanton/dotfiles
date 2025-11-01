@@ -42,7 +42,7 @@ linkDotfile now.py
 source ~/.bashrc
 
 sudo apt update && sudo apt upgrade
-sudo apt -y install vim zsh
+sudo apt -y install vim zsh tmux python3
 curl -L git.io/antigen > ~/antigen.zsh
 chsh -s /bin/zsh
 export PYTHONSTARTUP=~/.pythonrc

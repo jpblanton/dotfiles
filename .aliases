@@ -27,3 +27,5 @@ alias ramusage="ps -eo pmem,pcpu,vsize,pid,cmd | sort -k 1 -nr | head -5"
 alias vscodekill="ps uxa | grep .vscode-server | awk '{print }' | xargs kill -9"
 alias pys="pyenv activate sandbox-env; python"
 alias mounth="sudo mount -t drvfs H: /mnt/h"
+
+alias proxmox="ssh proxmox01.home -t tmux attach-session"
